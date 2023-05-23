@@ -2,12 +2,6 @@ import os
 from PIL import Image, ImageOps, ImageFilter, ImageDraw, ImageFont
 
 
-def update_image(path, out_path):
-    im = Image.open(path)
-    edg = im.filter(ImageFilter.FIND_EDGES)
-    return (edg, im.filename)
-
-
 input_path = input()
 out_path = input()
 
@@ -25,8 +19,9 @@ os.chdir(input_path)
 pictures = []
 
 for fl in os.listdir():
-    pictures.append(update_image(fl, out_path))
-
+    im = Image.open(fl)
+    edg = im.filter(ImageFilter.FIND_EDGES)
+    pictures.append((edg, im.filename))
 
 os.chdir(start_dir)
 os.chdir(out_path)
