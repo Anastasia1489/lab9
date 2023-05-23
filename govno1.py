@@ -25,8 +25,5 @@ for fl in os.listdir():
 
 os.chdir(start_dir)
 os.chdir(out_path)
-index = 0
 for pic in pictures:
-    pic[0].save(str(index) + '-' + pic[1])
-    index += 1
-
+    pic[0].save(pic[1])
